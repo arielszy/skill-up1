@@ -4,13 +4,13 @@ function Login() {
       <h1>formulario de Login</h1>
       <br />
       <form>
-        <label for="email">email</label>
+        <label htmlFor="email">email</label>
         <br />
-        <input type="email" name="email" />
+        <input type="email" name="email" id="email" />
         <br />
-        <label for="password">password</label>
+        <label htmlFor="password">password</label>
         <br />
-        <input type="password" name="password" />
+        <input type="password" name="password" id="password" />
         <br />
         <button type="submit">ingresar</button>
         <br />
