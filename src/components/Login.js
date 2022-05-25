@@ -22,7 +22,9 @@ function Login() {
         .post("http://challenge-react.alkemy.org", { email, password }) //envio a la api en formato('url del endpoint de la api',{datos a enviar})
         .then((res) => {
           swAlert(<h3>ingreso correcto</h3>);
-          console.log(res.data);
+          localStorage.clear();//borra los datos de la memoria local del navegador
+          localStorage.setItem("token", res.data.token);//guarda en la memoria del navegador el token recibido. solo guarda strings.
+          const token = localStorage.getItem('token');//recupera los datos de la memoria local
         }); //luego de recibir la respuesta la muestra
     }
   };
