@@ -1,3 +1,5 @@
+import axios from "axios";//libreria para peticiones a la api
+
 function Login() {
 
   const submitHandler = (e) => {
@@ -12,10 +14,13 @@ function Login() {
       console.log('los campos no pueden estar vacios');
     } else if(!regexEmail.test(email)){//tambien se puee usar return (dentro del if) en vez de else if
       console.log('debe ingresar un email valido');
-    } else if (email !== 'challenge@alkemy.com' || password !== 'react') {
+    } else if (email !== 'challenge@alkemy.org' || password !== 'react') {
       console.log('credenciales inválidas');
     } else {
       console.log('ingreso correcto');
+      axios
+        .post('http://challenge-react.alkemy.org', { email, password })//envio a la api en formato('url del endpoint de la api',{datos a enviar})
+        .then(res => { console.log(res.data); })//luego de recibir la respuesta la muestra
     }
 
 
