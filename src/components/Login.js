@@ -1,6 +1,8 @@
+//libraries
 import axios from "axios"; //libreria para peticiones a la api
 import React from "react";
 import swAlert from "@sweetalert/with-react";
+//hooks
 import { useNavigate } from "react-router-dom";
 
 function Login() {

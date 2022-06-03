@@ -1,3 +1,5 @@
+//css
+import '../css/footer.css';
 //rel="noopener noreferrer" recomendacion de react para link externos a la app.
 function Footer() {
   return (
