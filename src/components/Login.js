@@ -2,9 +2,10 @@
 import axios from "axios"; //libreria para peticiones a la api
 import React from "react";
 import swAlert from "@sweetalert/with-react";
-import { Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 function Login() {
+  const navig = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault(); //evita que se recargue la pagina
     const regexEmail = /\S+@\S+\.\S+/; //expresion regular para verificar email
@@ -27,17 +28,17 @@ function Login() {
           swAlert(<h3>ingreso correcto</h3>);
           localStorage.clear(); //borra los datos de la memoria local del navegador
           localStorage.setItem("token", res.data.token); //guarda en la memoria del navegador el token recibido. solo guarda strings.
-          Navigate("/listado");
+          navig({ to: "/listado" });
         });
     }
   };
-    
+
   let token = localStorage.getItem("token"); //recupera los datos de la memoria local
 
   return (
     //jsx no html
     <>
-      { token && <Navigate to="/listado" /> /*si hay token redirect a listado */}
+      {token && <Navigate to="/listado" /> /*si hay token redirect a listado */}
 
       <form onSubmit={submitHandler} className="mx-auto col-6">
         <h1 className="h3 mb-3 fw-normal">formulario de Login</h1>

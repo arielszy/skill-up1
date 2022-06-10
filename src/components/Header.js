@@ -14,12 +14,12 @@ function Header() {
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/Listado">
+          <Link className="nav-link" to="/listado">
             Listado
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/Contacto">
+          <Link className="nav-link" to="/contacto">
             Contacto
           </Link>
         </li>
