@@ -2,11 +2,9 @@
 import axios from "axios"; //libreria para peticiones a la api
 import React from "react";
 import swAlert from "@sweetalert/with-react";
-//hooks
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 function Login() {
-  const Navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault(); //evita que se recargue la pagina
     const regexEmail = /\S+@\S+\.\S+/; //expresion regular para verificar email
@@ -33,23 +31,38 @@ function Login() {
         });
     }
   };
+    
+  let token = localStorage.getItem("token"); //recupera los datos de la memoria local
+
   return (
     //jsx no html
     <>
-      <h1>formulario de Login</h1>
-      <br />
-      <form onSubmit={submitHandler}>
-        <label htmlFor="email">email</label>
-        <br />
-        <input type="text" name="email" id="email" />
-        <br />
-        <label htmlFor="password">password</label>
-        <br />
-        <input type="password" name="password" id="password" />
-        <br />
-        <br />
-        <button type="submit">ingresar</button>
-        <br />
+      { token && <Navigate to="/listado" /> /*si hay token redirect a listado */}
+
+      <form onSubmit={submitHandler} className="mx-auto col-6">
+        <h1 className="h3 mb-3 fw-normal">formulario de Login</h1>
+
+        <div className="form-floating">
+          <input
+            type="email"
+            className="form-control"
+            id="email"
+            placeholder="name@example.com"
+          />
+          <label htmlFor="email">Email address</label>
+        </div>
+        <div className="form-floating">
+          <input
+            type="password"
+            className="form-control"
+            id="password"
+            placeholder="Password"
+          />
+          <label htmlFor="password">Password</label>
+        </div>
+        <button className="w-100 btn btn-lg btn-primary" type="submit">
+          Log in
+        </button>
       </form>
     </>
   );
