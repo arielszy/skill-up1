@@ -1,5 +1,5 @@
 //hooks
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 
 function Listado() {
@@ -12,7 +12,38 @@ function Listado() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <h1>Soy el componente listado</h1>;
+  return (
+    <div className="row">
+      <div className="col-3 " style={{}}>
+        <div className="card">
+          <img src="..." className="card-img-top" alt="..." />
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <Link to="/" className="btn btn-primary">
+              Go somewhere
+            </Link>
+          </div>
+        </div>
+        <div className="card">
+          <img src="..." className="card-img-top" alt="..." />
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content.
+            </p>
+            <Link to="/" className="btn btn-primary">
+              Go somewhere
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Listado;
