@@ -1,11 +1,22 @@
-//hooks
 import { Link , Navigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from 'react';
 
 
+  
 function Listado() {
   
   let token = localStorage.getItem("token"); //recupera los datos de la memoria local
-
+  const [movieList, setMovieList] = useState([]);
+  
+  useEffect(() => {
+    axios.get(
+      "https://api.themoviedb.org/3/movie/popular?api_key=0e685fd77fb3d76874a3ac26e0db8a4b&language=es"
+    ).then(response => {
+      setMovieList(response.data.results)
+    })
+    
+  }, [setMovieList]);
 
   return (
     <>

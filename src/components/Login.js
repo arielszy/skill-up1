@@ -38,7 +38,11 @@ function Login() {
   return (
     //jsx no html
     <>
-      {token && <Navigate to="/listado" /> /*si hay token redirect a listado */}
+      {
+        token && (
+          <Navigate replace to="/listado" />
+        ) /*si hay token redirect a listado */
+      }
 
       <form onSubmit={submitHandler} className="mx-auto col-6">
         <h1 className="h3 mb-3 fw-normal">formulario de Login</h1>
