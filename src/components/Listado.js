@@ -1,12 +1,11 @@
-import { Link , Navigate } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from 'react';
-
+import '../css/movie.css';
 
   
 function Listado() {
   
-  let token = localStorage.getItem("token"); //recupera los datos de la memoria local
   const [movieList, setMovieList] = useState([]);
   
   useEffect(() => {
@@ -17,42 +16,32 @@ function Listado() {
     })
     
   }, [setMovieList]);
-
+const url = "http://image.tmdb.org/t/p/w500/";
   return (
     <>
-       {!token && <Navigate to="/" /> /*si no hay token redirect a home */}
       
       <div className="row mx-auto">
-        <div className="col-3 mx-auto" style={{}}>
-          <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <Link to="/" className="btn btn-primary">
-                Go somewhere
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="col-3 mx-auto" style={{}}>
-          <div className="card">
-            <img src="..." className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <Link to="/" className="btn btn-primary">
-                Go somewhere
-              </Link>
-            </div>
-          </div>
-        </div>
+        {
+          
+          movieList.map((movie, index) => {
+            return (
+              <div className="col-3 mx-auto" style={{}} key={index}>
+                <div className="card my-4">
+                  <img src={url+movie.poster_path} className="card-img-top pic" alt="poster" />
+                  <div className="card-body">
+                    <h5 className="card-title">{movie.title}</h5>
+                    <p className="card-text">
+                      {movie.overview.substring(0,100)}...
+                    </p>
+                    <Link to="/" className="btn btn-primary">
+                      ver mas detalles
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+}
       </div>
     </>
   );

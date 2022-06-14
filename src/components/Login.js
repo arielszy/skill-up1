@@ -2,7 +2,7 @@
 import axios from "axios"; //libreria para peticiones a la api
 import React from "react";
 import swAlert from "@sweetalert/with-react";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navig = useNavigate();
@@ -33,17 +33,11 @@ function Login() {
     }
   };
 
-  let token = localStorage.getItem("token"); //recupera los datos de la memoria local
 
   return (
     //jsx no html
     <>
-      {
-        token && (
-          <Navigate replace to="/listado" />
-        ) /*si hay token redirect a listado */
-      }
-
+  
       <form onSubmit={submitHandler} className="mx-auto col-6">
         <h1 className="h3 mb-3 fw-normal">formulario de Login</h1>
 
