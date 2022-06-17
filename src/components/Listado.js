@@ -34,7 +34,7 @@ const url = "http://image.tmdb.org/t/p/w500/";
                     <p className="card-text">
                       {movie.overview.substring(0,100)}...
                     </p>
-                    <Link to="/" className="btn btn-primary">
+                    <Link to={`/detalle?movieID=${movie.id}`} className="btn btn-primary">
                       ver mas detalles
                     </Link>
                   </div>

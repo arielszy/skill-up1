@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 //custom components
 import Login from "./components/Login";
 import Listado from "./components/Listado";
+import Detalle from "./components/Detalle";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 //css
@@ -26,6 +27,10 @@ function App() {
           <Route
             path="/listado"
             element={token ? <Listado /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/detalle"
+            element={token ? <Detalle /> : <Navigate to="/" />}
           />
         </Routes>
       </div>
