@@ -1,9 +1,25 @@
-
+/* eslint-disable no-undef */
+import { useEffect } from "react";
+import { axios } from "axios";
+import { swAlert } from "@sweetalert/with-react";
 function Detalle() {
-  let movieID = new URLSearchParams(window.location.search); //recibe el query string desde url
-  movieID = movieID.get("movieID"); //recibe en movieID
-  const movieDetails = [];
-  
+  let movieQ = new URLSearchParams(window.location.search); //recibe el query string desde url
+  let movieID = movieQ.get("movieID"); //recibe en movieID
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${movieID}?api_key=0e685fd77fb3d76874a3ac26e0db8a4b&language=es`
+      )
+      .then((response) => {
+        const movieDetails = response.data.results;
+      })
+      .catch((error) => {
+        swAlert(
+          <h3>No hemos podido conectar al servidor. intente mas tarde.</h3>
+        );
+      });
+  }, [movieID]);
   return (
     <>
       <h1>Detalle de la pelicula:</h1>
