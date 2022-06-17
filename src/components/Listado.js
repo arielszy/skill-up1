@@ -2,11 +2,12 @@ import { Link  } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from 'react';
 import '../css/movie.css';
+import { swAlert } from '@sweetalert/with-react';
 
   
 function Listado() {
   
-  const [movieList, setMovieList] = useState([]);
+  const [movieList, setMovieList] = useState([]);//siempe inicializar el estado
   
   useEffect(() => {
     axios.get(
@@ -14,7 +15,7 @@ function Listado() {
     ).then(response => {
       setMovieList(response.data.results)
     })
-    
+      .catch(error => { swAlert(<h3>No hemos podido conectar al servidor. intente mas tarde.</h3>); })
   }, [setMovieList]);
 const url = "http://image.tmdb.org/t/p/w500/";
   return (
