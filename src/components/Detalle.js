@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { swAlert } from "@sweetalert/with-react";
@@ -28,11 +29,10 @@ function Detalle() {
         <div className="row">
           <div className="col_4">
             <h2>Titulo: {movieDetails.title}</h2>
-      
-          
+
             <h5>Portada: </h5>
             <img
-              src={'http://image.tmdb.org/t/p/w500/' + movieDetails.poster_path}
+              src={"http://image.tmdb.org/t/p/w500/" + movieDetails.poster_path}
               className="card-img-top pic"
               alt="poster"
             />

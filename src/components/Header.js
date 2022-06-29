@@ -1,6 +1,8 @@
 //libraries
+import React from "react";
 import { Link } from "react-router-dom";
-
+//coponents
+import Buscador from "./Buscador";
 function Header() {
   return (
     <header className="d-flex justify-content-center py-3">
@@ -22,6 +24,9 @@ function Header() {
           <Link className="nav-link" to="/contacto">
             Contacto
           </Link>
+        </li>
+        <li>
+          <Buscador/>
         </li>
       </ul>
     </header>
