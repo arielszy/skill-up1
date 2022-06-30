@@ -2,13 +2,15 @@ import swAlert from "@sweetalert/with-react";
 import React from "react";
 
 function Buscador() {
-    const submitHandler = (e) => {
-        e.preventDefault();
-        const keyword = e.target.keyword.value;
-        if (!keyword) {
-            swAlert(<h5>Debe ingresar una palabra para buscar</h5>);
-        }
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const keyword = e.target.keyword.value.trim();//el trim elimina los espacios al principio y al final del string. los del medio no
+    if (!keyword || keyword.length < 2) {
+      swAlert(
+        <h5>Debe ingresar una palabra para buscar</h5>
+      );
     }
+  };
 
   return (
     <>
@@ -17,7 +19,6 @@ function Buscador() {
           <input
             type="text"
             className="form-control"
-            id="keyword"
             name="keyword"
             placeholder="buscar..."
           />
