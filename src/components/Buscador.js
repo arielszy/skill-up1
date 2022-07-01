@@ -1,14 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import swAlert from "@sweetalert/with-react";
 import React from "react";
 
 function Buscador() {
+  const navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
-    const keyword = e.target.keyword.value.trim();//el trim elimina los espacios al principio y al final del string. los del medio no
+    const keyword = e.target.keyword.value.trim(); //el trim elimina los espacios al principio y al final del string. los del medio no
     if (!keyword || keyword.length < 2) {
-      swAlert(
-        <h5>Debe ingresar una palabra para buscar</h5>
-      );
+      swAlert(<h5>Debe ingresar una palabra para buscar</h5>);
+    } else {
+      navigate(`/resultados?buscar=${keyword}`);
     }
   };
 

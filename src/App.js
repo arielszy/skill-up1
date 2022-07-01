@@ -7,6 +7,7 @@ import Listado from "./components/Listado";
 import Detalle from "./components/Detalle";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Resultados from "./components/Resultados";
 //css
 import "./css/bootstrap.min.css";
 import "./css/body.css";
@@ -31,6 +32,10 @@ function App() {
           <Route
             path="/detalle"
             element={token ? <Detalle /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/Resultados"
+            element={token ? <Resultados /> : <Navigate to="/" />}
           />
         </Routes>
       </div>
